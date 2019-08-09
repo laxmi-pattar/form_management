@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Form Management</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
+
+    <ul class="navbar-nav ml-auto">
+
+      <% if current_user %>
+        <li class="nav-item">
+          <a class='nav-link' href="<%= user_show_path %>">
+            <%= current_user.first_name || current_user.email %>
+          </a>
+        </li>
+
+        <li class="nav-item btn btn-primary">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+      <% else %>
+
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class: 'nav-link text-primary'  %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link text-primary'  %>
+        </li>
+
+      <% end %>
+
+      
+    </ul>
+  </div>
+</nav>
